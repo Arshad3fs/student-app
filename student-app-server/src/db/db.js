@@ -1,6 +1,6 @@
 import mysql from "mysql";
 
-//database connections//
+// DataBase Connection//
 
 export const getConnection = () => {
     return mysql.createConnection({
