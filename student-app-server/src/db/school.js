@@ -57,7 +57,6 @@ export default function getSchools(callbackFn) {
         callbackFn(error ? [] : result);
     });
 }
-
     export function signup(signObj,callBkFn){
         const connection=getConnection();
         connection.connect();
@@ -76,4 +75,4 @@ export default function getSchools(callbackFn) {
             connection.end();
             callBkFn(result[0]? result[0] : null);
         })
-    }
+}
