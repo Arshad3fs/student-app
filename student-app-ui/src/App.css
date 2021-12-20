@@ -111,6 +111,17 @@ td {
   padding-bottom: 10px;
 }
 
+#logout{
+  float: right;
+  cursor: pointer;
+  margin-top: -40px;
+
+}
+
+#logout:hover{
+  color: rgba(134, 226, 198, 0.945);
+}
+
 /* .field-group{
   display: flex;
   flex-wrap: wrap;

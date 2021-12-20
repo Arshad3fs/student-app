@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import UpdateSchool from './UpdateSchool';
 import CreateSchool from './CreateSchool';
+import Logout from './Logout';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -41,6 +42,7 @@ export default function DisplaySchools() {
 
     return (
         <div>
+            <Logout />
             <CreateSchool />
             <div >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" onClick={getSchools} height="20" fill="currentColor" class="bi bi-arrow-clockwise icon" viewBox="0 0 16 16">
