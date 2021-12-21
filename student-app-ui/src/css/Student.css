@@ -1,3 +1,7 @@
+/* .registration_form{
+      width: 85%;
+      height: %;
+} */
 
 .header {
   text-align: center;
@@ -21,14 +25,15 @@
   border-radius: 7px;
   margin: 5px;
   outline: none;
-  width: 80%;
+  width: 85%;
+  background-color: white;
 }
 .button1 {
   background-color: rgba(134, 226, 198, 0.945);
   margin-top: 5%;
-  margin-left: 80px;
+  margin-left: 0px;
   font-size: 15px;
-  padding: 5px 41px;
+  padding: 5px 65px;
   color: rgb(29, 87, 34);
   border-radius: 7px;
 }
@@ -42,7 +47,7 @@
 .button2 {
   background-color: rgba(134, 226, 198, 0.945);
   margin: 0px;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   font-size: 15px;
   padding: 5px 70px;
   margin-left: 80px;
@@ -60,6 +65,8 @@
 .success {
   color: green;
   margin-bottom: 2px;
+  text-align: center;
+  
 }
 .error_msg {
   color: red;
@@ -75,12 +82,12 @@
   margin: 5px;
   outline: none;
 }
-#opt {
+/* #opt {
   padding: 6px 130px 6px 10px;
   border-radius: 7px;
   margin: 5px;
   outline: none;
-}
+} */
 .field-group{
   display: flex;
   flex-wrap: wrap;
@@ -89,4 +96,13 @@
 .field{
   width: 25%;
   padding-bottom: 10px;
+}
+.btn{
+       
+         padding:10px;
+     text-align: center;
+}
+.register{
+       padding: 10px;
+      
 }

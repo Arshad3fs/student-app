@@ -5,6 +5,6 @@ export const getConnection = () => {
         host: 'localhost',
         user: 'root',
         password: '12345',
-        database: 'student'
+        database: 'students'
     });;
 }

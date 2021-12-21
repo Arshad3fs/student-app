@@ -101,7 +101,7 @@ export default function registerAPI() {
     getStudents((students) => {
       const results = students.map(student => {
         return {
-          id: student.ID, firstName: student.FIRSTNAME, lastName: student.LASTNAME, contactNumber: student.CONTACTNUMBER, isAdmin: student.ISADMIN,
+          id: student.ID, firstName: student.FIRSTNAME, lastName: student.LASTNAME, gender:student.GENDER, contactNumber: student.CONTACTNUMBER, isAdmin: student.ISADMIN,
           school: { id: student.ID, name: student.NAME },
           address: { houseNo: student.HOUSENO, street: student.STREET, town: student.TOWN, district: student.DISTRICT, state: student.STATE, country: student.COUNTRY, is_school_address: student.IS_SCHOOL_ADDRESS }
         }
@@ -114,7 +114,7 @@ export default function registerAPI() {
     const id = req.params.id;
     getStudentById(id, (student) => {
       const result = student ? {
-        id: student.ID, firstName: student.FIRSTNAME, lastName: student.LASTNAME, contactNumber: student.CONTACTNUMBER, isAdmin: student.ISADMIN,
+        id: student.ID, firstName: student.FIRSTNAME, lastName: student.LASTNAME, gender:student.GENDER, contactNumber: student.CONTACTNUMBER, isAdmin: student.ISADMIN,
         school: { id: student.ID, name: student.NAME },
         address: { houseNo: student.HOUSENO, street: student.STREET, town: student.TOWN, district: student.DISTRICT, state: student.STATE, country: student.COUNTRY, is_school_address: student.IS_SCHOOL_ADDRESS }
       } : {'message': "Student not found" };
@@ -155,6 +155,7 @@ export default function registerAPI() {
           console.log(address);
           body.address.addressId = address.ADDRESSID;
           createStudent(body, (result) => {
+            console.log(result)
             res.send(result ? { message: "Student created successfully" } : { message: "unsuccessfull" });
           })
         })
