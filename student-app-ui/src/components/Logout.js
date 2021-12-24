@@ -4,6 +4,7 @@ export default function Logout() {
 
     function logout() {
         localStorage.removeItem("SIGNIN");
+        localStorage.removeItem("studentData");
     }
 
     return (

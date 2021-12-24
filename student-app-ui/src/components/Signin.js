@@ -6,11 +6,23 @@ import '../css/Signin.css';
 export default function Singin(props) {
     
     let navigate = useNavigate();
+   
 
     const [set, setField] = useState({
+        firstName:null,
+        lastName:null,
         email: undefined,
-        password: null
+        password: null,
+        IS_ADMIN:null
     })
+    console.log(set);
+
+    let student={
+        "firstName":set.firstName,
+        "lastName":set.lastName,
+        "password":set.password,
+        "IS_ADMIN":set.IS_ADMIN
+    }
 
     function handleChange(event) {
         const id = event.target.id;
@@ -20,6 +32,11 @@ export default function Singin(props) {
 
     function handleSing() {
         let isLoginSuccess = true;
+        if(!set.firstName){
+            isLoginSuccess=false;
+        } else{
+            isLoginSuccess=true;
+        }
         if (!set.email) {
             isLoginSuccess = false;
         } else {
@@ -41,7 +58,8 @@ export default function Singin(props) {
             if (result.data.status) {
                 localStorage.setItem("SIGNIN", true);   
                 localStorage.setItem("SESSION_MINUTES", 15);             
-                localStorage.setItem("SESSION_SECONDS", 0);             
+                localStorage.setItem("SESSION_SECONDS", 0); 
+                localStorage.setItem("studentData",JSON.stringify(result.data.user));            
                 navigate("/student")
                 setField({ ...set, isLoginSuccess: isLoginSuccess })
             } else {

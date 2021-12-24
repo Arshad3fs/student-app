@@ -54,34 +54,45 @@ export default function Singup() {
         } else if (singUp.confirmPassword > 1 && singUp.confirmPassword == singUp.password) {
             isSingUpSuccess = true;
         }
-        if(!isSingUpSuccess){
+        if (isSingUpSuccess) {
+        //     alert("failed")
+        //     return;
+        // }
+        //  else {
+
+            // setSingUp({ ...singUp, isSingUpSuccess: isSingUpSuccess })
+            axios.post("http://localhost:5000/signup", {
+                email: singUp.email,
+                password: singUp.password,
+                firstName: singUp.firstName,
+                lastName: singUp.lastName
+            }).then(result => {
+                if (result.data.status) {
+                    navigate("/student")
+                    localStorage.setItem("user", JSON.stringify(result.data.user));
+                    setSingUp({ ...singUp, isSingUpSuccess: isSingUpSuccess })
+                } else {
+                    alert("failed");
+                }
+            }).catch(error => {
+                alert("Error handled")
+            })
+        }
+        else{
             alert("failed")
             return;
         }
-
-        // setSingUp({ ...singUp, isSingUpSuccess: isSingUpSuccess })
-        axios.post("http://localhost:5000/signup", {email: singUp.email, password: singUp.password}
-        ).then(result => {
-            if(result.data.status){
-                navigate("/student")
-                setSingUp({ ...singUp, isSingUpSuccess: isSingUpSuccess })
-            } else {
-                alert("failed");
-            }
-        }).catch(error => {
-            alert("Error handled")
-        })
     }
 
     return (
         <div className="container">
             {/* <div><img src="banner.jpg" alt="suhail" id="imgage"></img></div> */}
-            <div style={{width: "30%"}}>
+            <div style={{ width: "30%" }}>
                 <div className="sub-container">
                     {/* <div><img src="" alt="suhail" id="img"></img></div> */}
                     <div><h2 className="heading">Student Manager</h2></div>
                     <div><hr></hr></div>
-                    <form autoComplete="off" onSubmit={(event)=>event.preventDefault()}>
+                    <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
                         <div className="form">
                             <div className="padds">
                                 <div>
@@ -122,7 +133,7 @@ export default function Singup() {
                     </form>
                 </div>
             </div>
-            <div style={{width: "70%"}}>
+            <div style={{ width: "70%" }}>
                 <img src="banner.jpg" alt="suhail" id="imgage"></img>
             </div>
         </div>
