@@ -3,26 +3,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../css/Signin.css';
 
-export default function Singin(props) {
+export default function Signin(props) {
     
     let navigate = useNavigate();
    
 
     const [set, setField] = useState({
-        firstName:null,
-        lastName:null,
         email: undefined,
-        password: null,
-        IS_ADMIN:null
+        password: null
     })
     console.log(set);
-
-    let student={
-        "firstName":set.firstName,
-        "lastName":set.lastName,
-        "password":set.password,
-        "IS_ADMIN":set.IS_ADMIN
-    }
 
     function handleChange(event) {
         const id = event.target.id;
@@ -30,7 +20,7 @@ export default function Singin(props) {
         setField({ ...set, [id]: value })
     }
 
-    function handleSing() {
+    function handleSign() {
         let isLoginSuccess = true;
         if(!set.firstName){
             isLoginSuccess=false;
@@ -93,7 +83,7 @@ export default function Singin(props) {
                             <h5 > Remember Me </h5>
                         </div>
                     </div>
-                    <button className="btn" onClick={handleSing}>Sing In</button>
+                    <button className="btn" onClick={handleSign}>Sing In</button>
                     <div className="account">
                         <h5 id="bbb">No account yet?</h5>
                         <li id="lii">

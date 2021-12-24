@@ -5,11 +5,11 @@ import '../css/Signin.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Singup() {
+export default function Signup() {
 
     let navigate = useNavigate();
 
-    const [singUp, setSingUp] = useState({
+    const [signUp, setSignUp] = useState({
         firstName: undefined,
         lastName: undefined,
         email: undefined,
@@ -19,42 +19,42 @@ export default function Singup() {
     function handleChange(event) {
         const id = event.target.id;
         const value = event.target.value;
-        setSingUp({ ...singUp, [id]: value })
+        setSignUp({ ...signUp, [id]: value })
 
     }
-    function handleSingUp() {
-        let isSingUpSuccess = true;
-        if (!singUp.firstName) {
-            isSingUpSuccess = false
+    function handleSignUp() {
+        let isSignUpSuccess = true;
+        if (!signUp.firstName) {
+            isSignUpSuccess = false
         } else {
-            isSingUpSuccess = true;
+            isSignUpSuccess = true;
         }
-        if (!singUp.lastName) {
-            isSingUpSuccess = false
+        if (!signUp.lastName) {
+            isSignUpSuccess = false
         } else {
-            isSingUpSuccess = true;
+            isSignUpSuccess = true;
         }
-        if (!singUp.email) {
-            isSingUpSuccess = false
+        if (!signUp.email) {
+            isSignUpSuccess = false
         } else {
-            isSingUpSuccess = true;
+            isSignUpSuccess = true;
         }
-        if (singUp.password != singUp.confirmPassword) {
-            isSingUpSuccess = false
+        if (signUp.password != signUp.confirmPassword) {
+            isSignUpSuccess = false
         } else {
-            isSingUpSuccess = true;
+            isSignUpSuccess = true;
         }
-        if (!singUp.password) {
-            isSingUpSuccess = false
-        } else if (singUp.password.length > 1 && singUp.password == singUp.confirmPassword) {
-            isSingUpSuccess = true;
+        if (!signUp.password) {
+            isSignUpSuccess = false
+        } else if (signUp.password.length > 1 && signUp.password == signUp.confirmPassword) {
+            isSignUpSuccess = true;
         }
-        if (!singUp.confirmPassword) {
-            isSingUpSuccess = false
-        } else if (singUp.confirmPassword > 1 && singUp.confirmPassword == singUp.password) {
-            isSingUpSuccess = true;
+        if (!signUp.confirmPassword) {
+            isSignUpSuccess = false
+        } else if (signUp.confirmPassword > 1 && signUp.confirmPassword == signUp.password) {
+            isSignUpSuccess = true;
         }
-        if (isSingUpSuccess) {
+        if (isSignUpSuccess) {
         //     alert("failed")
         //     return;
         // }
@@ -62,15 +62,15 @@ export default function Singup() {
 
             // setSingUp({ ...singUp, isSingUpSuccess: isSingUpSuccess })
             axios.post("http://localhost:5000/signup", {
-                email: singUp.email,
-                password: singUp.password,
-                firstName: singUp.firstName,
-                lastName: singUp.lastName
+                email: signUp.email,
+                password: signUp.password,
+                firstName: signUp.firstName,
+                lastName: signUp.lastName
             }).then(result => {
                 if (result.data.status) {
                     navigate("/student")
                     localStorage.setItem("user", JSON.stringify(result.data.user));
-                    setSingUp({ ...singUp, isSingUpSuccess: isSingUpSuccess })
+                    setSignUp({ ...signUp, isSingUpSuccess: isSignUpSuccess })
                 } else {
                     alert("failed");
                 }
@@ -96,26 +96,26 @@ export default function Singup() {
                         <div className="form">
                             <div className="padds">
                                 <div>
-                                    <input type="name" id="firstName" className="singup" placeholder="First Name" value={singUp.firstName} onChange={handleChange}></input>
-                                    {singUp.firstName === "" ? <p className="error-msg">firstname field mandatory</p> : ""}
+                                    <input type="name" id="firstName" className="singup" placeholder="First Name" value={signUp.firstName} onChange={handleChange}></input>
+                                    {signUp.firstName === "" ? <p className="error-msg">firstname field mandatory</p> : ""}
                                 </div>
                                 <div>
-                                    <input type="name" id="lastName" className="singup" placeholder="Last Name" value={singUp.lastName} onChange={handleChange}></input>
+                                    <input type="name" id="lastName" className="singup" placeholder="Last Name" value={signUp.lastName} onChange={handleChange}></input>
                                 </div>
                                 <div>
-                                    <input type="email" id="email" className="singup" placeholder="Email" value={singUp.email} onChange={handleChange}></input>
-                                    {singUp.email === "" ? <p className="error-msg">Email field mandatory</p> : ""}
+                                    <input type="email" id="email" className="singup" placeholder="Email" value={signUp.email} onChange={handleChange}></input>
+                                    {signUp.email === "" ? <p className="error-msg">Email field mandatory</p> : ""}
 
                                 </div>
                                 <div>
-                                    <input type="password" id="password" className="singup" placeholder="Password" value={singUp.password} onChange={handleChange}></input>
-                                    {singUp.password === "" ? <p className="error-msg">password field mandatory</p> : ""}
-                                    {singUp.password != singUp.confirmPassword ? <p className="error-msg">password  not match</p> : ""}
+                                    <input type="password" id="password" className="singup" placeholder="Password" value={signUp.password} onChange={handleChange}></input>
+                                    {signUp.password === "" ? <p className="error-msg">password field mandatory</p> : ""}
+                                    {signUp.password != signUp.confirmPassword ? <p className="error-msg">password  not match</p> : ""}
                                 </div>
                                 <div>
-                                    <input type="password" id="confirmPassword" className="singup" placeholder="Confirm Password" value={singUp.confirmPassword} onChange={handleChange}></input>
-                                    {singUp.confirmPassword === "" ? <p className="error-msg">confirmPassword field mandatory</p> : ""}
-                                    {singUp.confirmPassword != singUp.password ? <span className="error-msg">password not match</span> : ""}
+                                    <input type="password" id="confirmPassword" className="singup" placeholder="Confirm Password" value={signUp.confirmPassword} onChange={handleChange}></input>
+                                    {signUp.confirmPassword === "" ? <p className="error-msg">confirmPassword field mandatory</p> : ""}
+                                    {signUp.confirmPassword != signUp.password ? <span className="error-msg">password not match</span> : ""}
                                 </div></div>
 
                             <div className="checkbox">
@@ -124,7 +124,7 @@ export default function Singup() {
                                     <h5 > I accept terms & condition</h5>
                                 </div>
                             </div>
-                            <button id="button1" onClick={handleSingUp}>Sing Up</button>
+                            <button id="button1" onClick={handleSignUp}>Sing Up</button>
                             <div className="li">
                                 <h5 id="aaa">Already have an account ?</h5>
                                 <li id="list">
