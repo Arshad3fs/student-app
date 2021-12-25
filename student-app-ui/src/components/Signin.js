@@ -3,14 +3,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../css/Signin.css';
 
-export default function Singin(props) {
+export default function Signin(props) {
     
     let navigate = useNavigate();
+   
 
     const [set, setField] = useState({
         email: undefined,
         password: null
     })
+    console.log(set);
 
     function handleChange(event) {
         const id = event.target.id;
@@ -18,8 +20,13 @@ export default function Singin(props) {
         setField({ ...set, [id]: value })
     }
 
-    function handleSing() {
+    function handleSign() {
         let isLoginSuccess = true;
+        if(!set.firstName){
+            isLoginSuccess=false;
+        } else{
+            isLoginSuccess=true;
+        }
         if (!set.email) {
             isLoginSuccess = false;
         } else {
@@ -41,7 +48,8 @@ export default function Singin(props) {
             if (result.data.status) {
                 localStorage.setItem("SIGNIN", true);   
                 localStorage.setItem("SESSION_MINUTES", 15);             
-                localStorage.setItem("SESSION_SECONDS", 0);             
+                localStorage.setItem("SESSION_SECONDS", 0); 
+                localStorage.setItem("studentData",JSON.stringify(result.data.user));            
                 navigate("/student")
                 setField({ ...set, isLoginSuccess: isLoginSuccess })
             } else {
@@ -75,7 +83,7 @@ export default function Singin(props) {
                             <h5 > Remember Me </h5>
                         </div>
                     </div>
-                    <button className="btn" onClick={handleSing}>Sing In</button>
+                    <button className="btn" onClick={handleSign}>Sing In</button>
                     <div className="account">
                         <h5 id="bbb">No account yet?</h5>
                         <li id="lii">

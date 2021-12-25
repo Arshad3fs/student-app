@@ -195,7 +195,7 @@ export default function registerAPI() {
       getData(body, (result) => {
         if (!result) {
           signup(body, (signup) => {
-            res.send(signup ? { status: true, message: "Registered successfully" } : { status: false, message: "Unsuccessfull" })
+            res.send(signup ? { status: true, message: "Registered successfully", user:{"firstName":signup.FIRSTNAME,"lastName": signup.LASTNAME, "is_admin":signup.IS_ADMIN} } : { status: false, message: "Unsuccessfull" })
           })
         }
         else {
@@ -210,9 +210,11 @@ export default function registerAPI() {
 
   app.post("/signin", (req, res) => {
     const body = req.body;
+    // console.log(body);
     if (body.email != "" && body.password != "") {
       getData(body, (result) => {
-        res.send(result ? { status: true, message: "Signin Success" } : { status: false, message: "No data found, Please signup." });
+        console.log(result)
+        res.send(result ? { status: true, message: "Signin Success" ,user:{"firstName":result.FIRSTNAME,"lastName": result.LASTNAME, "is_admin":result.IS_ADMIN}} : { status: false, message: "No data found, Please signup." });
       })
     }
     else {

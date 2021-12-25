@@ -61,7 +61,7 @@ export default function getSchools(callbackFn) {
 export function signup(signObj, callBkFn) {
     const connection = getConnection();
     connection.connect();
-    connection.query(`INSERT INTO USER (EMAIL,PASSWORD) VALUES('${signObj.email}',${signObj.password})`, (error, result) => {
+    connection.query(`INSERT INTO USER (FIRSTNAME,LASTNAME,EMAIL,PASSWORD,IS_ADMIN) VALUES('${signObj.firstName}','${signObj.lastName}','${signObj.email}','${signObj.password}',"N")`, (error, result) => {
         if (error) throw error;
         connection.end();
         callBkFn(result ? true : NULL);
