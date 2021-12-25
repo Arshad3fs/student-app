@@ -77,3 +77,18 @@ export function getData(signObj, callBkFn) {
         callBkFn(result[0] ? result[0] : null);
     })
 }
+
+export function getUser(callBkFn){
+    const connection = getConnection();
+    connection.connect();
+    connection.query(`SELECT * FROM USER`,(error,result)=>{
+        if(error) throw error;
+        connection.end();
+        callBkFn(result ? result:error);
+    })
+
+    }
+
+
+    
+
