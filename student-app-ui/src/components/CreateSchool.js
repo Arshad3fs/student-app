@@ -14,7 +14,8 @@ export default function CreateSchool() {
         country: null,
         isRegistrationOk: false
     });
-    console.log(userData);
+    
+    
 
     function handleChange(event) {
         const name = event.target.id;
