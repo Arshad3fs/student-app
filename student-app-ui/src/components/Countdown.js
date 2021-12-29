@@ -1,13 +1,17 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import Timeout from './Timeout';
 
 export default function Countdown(props) {
+    let nav = useNavigate();
 
     const initialMinutes = parseInt(localStorage.getItem("SESSION_MINUTES"));
     const initialSeconds = parseInt(localStorage.getItem("SESSION_SECONDS"));
 
     const [minutes, setMinutes] = useState(isNaN(initialMinutes) ? 0 : initialMinutes);
     const [seconds, setSeconds] = useState(isNaN(initialSeconds) ? 0 : initialSeconds);
+
 
     useEffect(() => {
         let myInterval = setInterval(() => {
@@ -20,7 +24,7 @@ export default function Countdown(props) {
                     clearInterval(myInterval);
                     localStorage.removeItem("SESSION_MINUTES");
                     localStorage.removeItem("SESSION_SECONDS");
-
+                    nav("/signin")
                 }
                 else {
                     setMinutes(minutes - 1);
@@ -45,7 +49,7 @@ export default function Countdown(props) {
                 }
             </div>
             <div className='timeout-popup'>
-                 <h1> Timeout </h1>
+                {minutes < 2 ? <Timeout min={minutes} sec={seconds} setMin={setMinutes} setSec={setSeconds} /> : ""}
             </div>
         </div>
     );

@@ -21,7 +21,7 @@ input:hover {
   border-color: rgba(134, 226, 198, 0.945);
   box-shadow: 0px 0px 12px rgba(134, 226, 198, 0.945);
 }
-.btn1 {
+.okbtn {
   background-color: rgba(134, 226, 198, 0.945);
   margin-top: 5%;
   font-size: 15px;
@@ -130,14 +130,213 @@ td {
   color: rgba(134, 226, 198, 0.945);
 }
 
+
+.information{
+  padding: 20px;
+}
+*{
+  font:'Poppins', sans-serif;
+  
+  padding:0;  
+}
+
+
+/* Header And Footer  */
+ nav{
+ height:80px;
+ background-color: black;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding:0px 28px 0px 50px;
+ box-sizing: border-box;
+}
+
+nav ul{
+  display: flex;
+  list-style: none;
+  
+}
+
+
+nav ul li a{
+  
+  color:white;
+  text-decoration: none;
+  margin:10px;
+ 
+}
+
+nav ul li a:hover:not(.user){
+  background-color: white;
+  color:black;
+  border-radius: 12%;
+}
+
+.logo{
+ height:84px;
+ width: 80px;
+}
+
+nav .menu-btn svg{
+  visibility:hidden;
+}
+
+
+
+
+#checkbox{
+  display: none;
+}
+
+#checkbox:checked ~ .close{
+margin-right:-100%
+}
+
+#checkbox:checked ~ ul{
+  left:0%;
+  transition: all 0.5s ease;
+}
+
+footer{
+  display: flex;
+  margin-top:35%;
+  background-color: black;
+  padding:2% 10%;
+  color:white;
+  justify-content: space-between;
+}
+
+footer ul li{
+margin:0px 100px auto 0px ;
+list-style: none;
+color:white;
+}
+
+footer ul .head{
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+footer ul li a{
+   text-decoration: none;
+   color:white;
+}
+
+footer ul li a:hover,
+footer .container3 ul  a svg:hover{
+  color:cyan;
+}
+footer .head-container3 ul li{
+  margin-right:13%;
+ 
+ width:10px;
+ display: inline;
+} 
+
+footer .head-container3 ul  a svg{
+  margin:6px;
+ color:white;
+}
+
+@media (max-width: 940px){
+  nav .menu-btn svg{
+      visibility:visible;
+  }
+  nav ul{
+      position: fixed;
+      top:80px;
+      left:-100%;
+      background-color: black;
+      height: 100%;
+      width: 100%;
+      display: block;
+      text-align: center;
+  }
+  nav ul li {
+  margin: 40px 0;
+  }
+
+nav ul li a{
+   font-size: 20px;
+}
+nav ul li a:hover:not(.user),
+nav ul li a.active{
+  background-color:black;
+  color:cyan;
+  border-radius: 12%;
+}
+
+footer{
+  display:block;
+  text-align: center;
+}
+footer div{
+  margin-top:20px;
+}
+footer ul li{
+  margin-left:30%;
+} 
+} 
+
+/* Timeout */
+
+ .timeout-container{
+ font-family:Arial, Helvetica, sans-serif ;
+}
 .timeout-popup {
-  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
 }
-.information{
-  padding: 20px;
+.sub-container1{
+  /* margin: 175px 435px; */
+  margin:190px 455px;
+  padding: 32px;
+  background-color: white;
+  border: 0.1px solid grey;
+  border-radius:12px;
+  box-shadow: 0px 0px 12px grey;
+}
+@media (max-width:900px) {
+  .sub-container1{
+    margin:140px;
+  }
+  
+}
+.timeout-header{
+  margin-bottom: 0px;
+}
+.timeout-message{
+  text-align: center;
+  margin-top: 30px;
 }
 
+.pop-okbtn{
+  border-radius: 5px;
+  padding:3px 39px ;
+  color:black;
+  /* margin-left: 124px;
+    margin-top: 14px; */ 
+}
+.mins-count{
+text-align: center;
+}
+.time-btns{
+  display: flex;
+  justify-content: space-between;
+}
+.update-btn{
+  background-color: white;
+  color: rgba(28, 146, 111, 0.945);
+  box-shadow: 0px 0px 12px;
+  cursor: pointer;
+  background-color: rgba(134, 226, 198, 0.945);
+  color: rgb(29, 87, 34);
+  border-radius: 7px;
+  padding:8px 10px;
+}
+a{
+color: black;
+}
