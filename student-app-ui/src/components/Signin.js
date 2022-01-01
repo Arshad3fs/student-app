@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../css/Signin.css';
 
+
 export default function Signin(props) {
     
     let navigate = useNavigate();
@@ -64,7 +65,6 @@ export default function Signin(props) {
     return (
         <div className="variant">
             <div className="sub-variant">
-
                 <div><h2 className="heading">Student Login</h2></div>
                 <div><hr></hr></div>
                 <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
@@ -85,10 +85,8 @@ export default function Signin(props) {
                     </div>
                     <button className="btn" onClick={handleSign}>Sing In</button>
                     <div className="account">
-                        <h5 id="bbb">No account yet?</h5>
-                        <li id="lii">
-                            <Link to="/signup">Signup</Link>
-                        </li>
+                        <h5 >No account yet?</h5>
+                        <Link className="link" to="/signup">Signup</Link>
                     </div>
                 </form>
             </div>
