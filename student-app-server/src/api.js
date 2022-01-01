@@ -1,6 +1,6 @@
 import { app } from "../index.js";
 import bodyParser from "body-parser";
-import getSchools, { createSchool, deleteSchool, getSchool, updateSchool, getData, signup } from "./db/school.js";
+import getSchools, { createSchool, deleteSchool, getUser, getSchool, updateSchool, getData, signup } from "./db/school.js";
 import { createAddress, deleteAddress, getAddressByParams, updateAddress } from "./db/address.js";
 import { createStudent, deleteStudent, getStudentByFrNameAndCnNumber, getStudentById, getStudents, updateStudent } from "./db/student.js";
 
@@ -220,6 +220,19 @@ export default function registerAPI() {
     else {
       res.send({ message: "Password and Email are mandatory", status: false })
     }
+  })
+
+  app.get("/getAllUser", (req, res) => {
+    getUser((data) => {
+      const user = data.map(user => {
+        return {
+          id:user.ID,firstName: user.FIRSTNAME, lastName: user.LASTNAME, email: user.EMAIL
+
+        }
+      })
+      res.send(user)
+
+    })
   })
 
 }
