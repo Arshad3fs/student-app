@@ -11,7 +11,7 @@ export default function Hader() {
                 </head>
                 <body>
 
-                    <nav>
+                    <nav className='nav-header'>
                         <div >
                             <img className="logo" src='https://github.com/Arshad3fs/student-app/blob/master/student-app-ui/public/logo.png?raw=true' alt="STudent"/>
                         </div>

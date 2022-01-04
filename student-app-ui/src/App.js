@@ -5,12 +5,10 @@ import { useEffect, useState } from 'react';
 import React from "react"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import Countdown from './components/Countdown.js';
 import DisplayShools from './components/DisplaySchools';
 import DisplayStudents from './components/DisplayStudents';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
-import Timeout from './components/Timeout';
 
 
 import {
