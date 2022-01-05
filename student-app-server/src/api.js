@@ -2,7 +2,8 @@ import { app } from "../index.js";
 import bodyParser from "body-parser";
 import getSchools, { createSchool, deleteSchool, getUser, getSchool, updateSchool, getData, signup } from "./db/school.js";
 import { createAddress, deleteAddress, getAddressByParams, updateAddress } from "./db/address.js";
-import { createStudent, deleteStudent, getStudentByFrNameAndCnNumber, getStudentById, getStudents, updateStudent } from "./db/student.js";
+import { createStudent, deleteStudent, getStudentByFrNameAndCnNumber, getStudentById, getStudents, updateStudent, } from "./db/student.js";
+import {update,deleteUser} from "./db/user.js";
 
 /**
  * Register all the API's
@@ -222,6 +223,23 @@ export default function registerAPI() {
     }
   })
 
+
+  app.put("/user/update",(req,res)=>{
+    const body=req.body;
+    console.log(body)
+    update(body,(result)=>{
+      res.send(result? {message:"User Updated successfully"}:{message:"could not update user"})
+    })
+  })
+
+  app.delete("/user/delete/:id",(req,res)=>{
+    const id=req.params.id;
+    console.log(id);
+    deleteUser(id,(result)=>{
+      res.send(result ? {message:"Deleted Successfully"}:{message:"failed to delete"});
+    })
+
+  })
   app.get("/getAllUser", (req, res) => {
     getUser((data) => {
       const user = data.map(user => {
@@ -236,3 +254,5 @@ export default function registerAPI() {
   })
 
 }
+
+
