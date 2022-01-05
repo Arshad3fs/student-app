@@ -1,10 +1,6 @@
 import { app } from "../index.js";
 import bodyParser from "body-parser";
-<<<<<<< HEAD
-import getSchools, { createSchool, deleteSchool, getSchool, updateSchool, getData, signup, } from "./db/school.js";
-=======
 import getSchools, { createSchool, deleteSchool, getUser, getSchool, updateSchool, getData, signup } from "./db/school.js";
->>>>>>> master
 import { createAddress, deleteAddress, getAddressByParams, updateAddress } from "./db/address.js";
 import { createStudent, deleteStudent, getStudentByFrNameAndCnNumber, getStudentById, getStudents, updateStudent, } from "./db/student.js";
 import {update,deleteUser} from "./db/user.js";
