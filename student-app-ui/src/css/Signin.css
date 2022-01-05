@@ -7,9 +7,23 @@
      background-color: white;
      border-radius: 5%;
 }
+@media (max-width:800px) {
+    .sub-variant{
+        width: 35%;
+    }
+}
+@media (max-width:600px) {
+    .sub-variant{
+        width: 45%;
+    }
+}
+@media (max-width:400px) {
+    .sub-variant{
+        width: 55%;
+    }
+}
 #email{
     padding:10px;
-    width: 80%;
     border-top: none;
     border-left:none;
     border-right: none;
@@ -17,7 +31,6 @@
 }
 #password{
     padding:10px;
-    width: 80%;
     border-top: none;
     border-left:none;
     border-right: none;
@@ -38,21 +51,9 @@
          margin-top: -10%;
 }
 .account{
-        display: flex;
-        flex-direction: row;
-        margin-left: 5%;
+        margin:0px;
 }
-#lii{
-    list-style: none;
-    margin-left: 45%;
-    margin-top: 10%;
-}
-a{
-   text-decoration: none;
-}
-#bbb{
-      margin-left: -2%;
-}
-#ddd{
-    margin-left: 1%;
+.link{
+    margin-top: 20px;
+    margin-left: 43px;
 }
