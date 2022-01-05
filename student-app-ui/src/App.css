@@ -21,7 +21,7 @@ input:hover {
   border-color: rgba(134, 226, 198, 0.945);
   box-shadow: 0px 0px 12px rgba(134, 226, 198, 0.945);
 }
-.okbtn {
+.btn1 {
   background-color: rgba(134, 226, 198, 0.945);
   margin-top: 5%;
   font-size: 15px;
@@ -145,7 +145,7 @@ td {
 
 
 /* Header And Footer  */
- nav{
+ .nav-header{
  height:80px;
  background-color: black;
  display: flex;
@@ -155,14 +155,14 @@ td {
  box-sizing: border-box;
 }
 
-nav ul{
+.nav-heade ul{
   display: flex;
   list-style: none;
   
 }
 
 
-nav ul li a{
+.nav-heade ul li a{
   
   color:white;
   text-decoration: none;
@@ -170,7 +170,7 @@ nav ul li a{
  
 }
 
-nav ul li a:hover:not(.user){
+.nav-heade ul li a:hover:not(.user){
   background-color: white;
   color:black;
   border-radius: 12%;
@@ -181,7 +181,7 @@ nav ul li a:hover:not(.user){
  width: 80px;
 }
 
-nav .menu-btn svg{
+.nav-heade .menu-btn svg{
   visibility:hidden;
 }
 
@@ -342,4 +342,24 @@ text-align: center;
 }
 a{
 color: black;
+}
+ 
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.page-link{
+
+  list-style: none;
+  padding:6px ;
+  border: 0.6px solid grey;
+  margin:5px;
+  cursor: pointer;
+}
+.active-page{
+  background-color: rgb(55, 167, 193);
+  list-style: none;
+  padding:6px ;
+  border: 0.6px solid grey;
+  margin:5px;
 }
