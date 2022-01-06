@@ -16,11 +16,8 @@ export default function DisplaySchools() {
     const [dataFilter, setdataFilter] = useState(null);
     const [paginatedSchools, setPaginatedSchools] = useState([])
     const [currentPage, setcurrentPage] = useState(1)
-    
-    const pageCount = Math.ceil(schools.length / 10)
-    
-    const pages = _.range(1, pageCount + 1)
-console.log(currentPage)
+
+   
 
     useEffect(() => {
 
@@ -48,6 +45,12 @@ console.log(currentPage)
 
 
 
+    const pageCount = Math.ceil(schools.length / 10)
+
+    const pages = _.range(1, pageCount + 1)
+    console.log(currentPage)
+    setcurrentPage(1)
+
     function pagination(pageNo) {
         console.log(pageNo)
         let startIndex = (pageNo - 1) * 10;
@@ -58,19 +61,37 @@ console.log(currentPage)
 
     function dec_page() {
         let index = currentPage - 1;
+        if(index >= pageCount){
+            let startIndex = (index - 1) * 10
+            const paginatedSchool = (_(schools).slice(startIndex).take(10).value())
+           setPaginatedSchools(paginatedSchool)
+            setcurrentPage(index)
+            }
+            else{
+                let index=currentPage;
+                let startIndex=(index-1)*10;
+                const paginatedSchool = (_(schools).slice(startIndex).take(10).value())
+                setPaginatedSchools(paginatedSchool)
+                 setcurrentPage(index)
+            }
+    }
+    function inc_page() {
+        let index = currentPage + 1;
+        if(index <= pageCount){
         let startIndex = (index - 1) * 10
         const paginatedSchool = (_(schools).slice(startIndex).take(10).value())
-        setPaginatedSchools(paginatedSchool)
+       setPaginatedSchools(paginatedSchool)
         setcurrentPage(index)
+        }
+        else{
+            let index=currentPage;
+            let startIndex=(index-1)*10;
+            const paginatedSchool = (_(schools).slice(startIndex).take(10).value())
+            setPaginatedSchools(paginatedSchool)
+             setcurrentPage(index)
+        }
     }
-    function inc_page(){
-        let index=currentPage + 1;
-        let startIndex = (index - 1) * 10
-        const paginatedSchool = (_(schools).slice(startIndex).take(10).value())
-        setPaginatedSchools(paginatedSchool)
-        setcurrentPage(index)
-    }
-    
+
 
     return (
         <div>
@@ -127,9 +148,8 @@ console.log(currentPage)
             </table>
             <nav>
                 <ul className='pagination' >
-                    <li className='page-link' onClick={dec_page}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                        <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    <li className='page-link' onClick={dec_page}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+                        <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
                     </svg></li>
                     {
                         pages.map((page) => {
@@ -138,10 +158,9 @@ console.log(currentPage)
                             )
                         })
                     }
-                    <li className='page-link' onClick={inc_page}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-</svg></li>
+                    <li className='page-link' onClick={inc_page}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                    </svg></li>
 
                 </ul>
             </nav>
